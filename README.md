@@ -1,7 +1,7 @@
 # :zap: Python Django BarCode
 
 * Python-Django app to create & display barcodes
-* Code from a tutorial by [Pyplane](https://www.youtube.com/channel/UCQtHyVB4O4Nwy1ff5qQnyRw) - see [:clap: Inspiration](#clap-inspiration) below.
+* Code from a tutorial by [Pyplane](https://www.youtube.com/channel/UCQtHyVB4O4Nwy1ff5qQnyRw) - see [:clap: Inspiration](#clap-inspiration) below
 
 ## :page_facing_up: Table of contents
 
@@ -19,11 +19,12 @@
 
 ## :books: General info
 
-* Django framework: used to tba
+* Django framework admin dashboard lets user specify barcode fields. These are converted into a barcode using the `python-barcode` library function and displayed.
 
 ## :camera: Screenshots
 
 ![screen print](./img/admin.png)
+![screen print](./img/barcode.png)
 
 ## :signal_strength: Technologies
 
@@ -42,32 +43,49 @@
 * Run `python manage.py startapp products` to create Python module
 * Add code
 * Run `pip freeze` to see list of modules installed. [Ref. Docs](https://pip.pypa.io/en/stable/reference/pip_freeze/)
-* Run `python manage.py makemigrations`
-* Run `python manage.py migrate`
+* Run `python manage.py makemigrations` for changes to models etc.
+* Run `python manage.py migrate` to migrate the migration files.
 * To add a superuser Run `python manage.py createsuperuser --username=joe --email=joe@example.com` [Ref. Docs](https://docs.djangoproject.com/en/3.1/topics/auth/default/)
 * Run `python manage.py runserver` to run server on port 8000 and open /admin console
 
 ## :computer: Code Examples
 
-* extract from tba
+* extract from `products/models.py` by [Pyplane](https://www.youtube.com/channel/UCQtHyVB4O4Nwy1ff5qQnyRw)  showing Product class with fields, a string representation of the product and the bar code
 
 ```python
-)
+class Product(models.Model):
+    name = models.CharField(max_length=200)
+    barcode = models.ImageField(upload_to='images/', blank=True)
+    country_id = models.CharField(max_length=1, null=True)
+    manufacturer_id = models.CharField(max_length=6, null=True)
+    product_id = models.CharField(max_length=5, null=True)
+
+    def __str__(self):
+        return str(self.name)
+
+    def save(self, *args, **kwargs):
+        EAN = barcode.get_barcode_class('ean13')
+        ean = EAN(f'{self.country_id}{self.manufacturer_id}{self.product_id}', writer=ImageWriter())
+        buffer = BytesIO()
+        ean.write(buffer)
+        self.barcode.save(f'{self.name}.png', File(buffer), save=False)
+        return super().save(*args, **kwargs)
 ```
 
 ## :cool: Features
 
-* tba
+* Django inbuilt packages - admin dashboard
 
 ## :clipboard: Status & To-do list
 
 * Status: Working
-* To-do: Comment code, complete readme
+* To-do: Comment code, complete readme. Change server config so it shows admin panel right away (so not necessary to add `/admin` to server path)
 
 ## :clap: Inspiration
 
-* [Pyplane: Youtube: Django barcode generator | How to create barcodes in Django)](https://www.youtube.com/watch?v=VDIJ4GgKxR8&t=102s)
+* [Pyplane: Youtube: Django barcode generator | How to create barcodes in Django](https://www.youtube.com/watch?v=VDIJ4GgKxR8&t=102s)
 * [python-barcode documentation](https://python-barcode.readthedocs.io/en/stable/barcode.html#creating-barcodes-as-image)
+* [Medium: Shankar Jha: What makes Django cool?](https://medium.com/@shankarj67/what-makes-django-cool-5d7cad83de5c)
 
 ## :envelope: Contact
 
