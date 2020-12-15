@@ -38,8 +38,8 @@
 * [Install Python](https://docs.python-guide.org/starting/installation/)
 * [Install pip](https://docs.python-guide.org/dev/virtualenvs/#installing-pipenv)
 * [Install Django](https://docs.djangoproject.com/en/3.1/howto/windows/) by typing `pip install Django`
-* Run `django-admin startproject barcode` to create a new project [ref. docs](https://docs.djangoproject.com/en/3.1/intro/tutorial01/)
-* Open `barcode` in VS Code
+* Run `django-admin startproject barcode_proj` to create a new project [ref. docs](https://docs.djangoproject.com/en/3.1/intro/tutorial01/)
+* Open `barcode_proj` in VS Code
 * Run `python manage.py startapp products` to create Python module
 * Add code
 * Run `pip freeze` to see list of modules installed. [Ref. Docs](https://pip.pypa.io/en/stable/reference/pip_freeze/)
