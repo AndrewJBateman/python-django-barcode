@@ -2,6 +2,12 @@
 
 * Python-Django app to create & display barcodes
 * Code from a tutorial by [Pyplane](https://www.youtube.com/channel/UCQtHyVB4O4Nwy1ff5qQnyRw) - see [:clap: Inspiration](#clap-inspiration) below
+* **Note:** to open web links in a new window use: _ctrl+click on link_
+
+![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/python-django-barcode?style=plastic)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AndrewJBateman/python-django-barcode?style=plastic)
+![GitHub Repo stars](https://img.shields.io/github/stars/AndrewJBateman/python-django-barcode?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/AndrewJBateman/python-django-barcode?style=plastic)
 
 ## :page_facing_up: Table of contents
 
@@ -87,6 +93,10 @@ class Product(models.Model):
 * [python-barcode documentation](https://python-barcode.readthedocs.io/en/stable/barcode.html#creating-barcodes-as-image)
 * [Medium: Shankar Jha: What makes Django cool?](https://medium.com/@shankarj67/what-makes-django-cool-5d7cad83de5c)
 
+## :file_folder: License
+
+* N/A
+
 ## :envelope: Contact
 
-* Repo created by [ABateman](https://www.andrewbateman.org) - you are welcome to [send me a message](https://andrewbateman.org/contact)
+* Repo created by [ABateman](https://github.com/AndrewJBateman), email: gomezbateman@yahoo.com
